@@ -1,0 +1,528 @@
+@import './fonts.scss';
+@import './animation.scss';
+
+@mixin hp {
+    .hp{
+
+        height: .25rem;
+        border: 4px solid white;
+        border-radius: .25rem;
+
+        span{
+            display: block;
+            height: 100%;
+            width: 100%;
+            background-color: green;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+    .battle{
+        width: 31.25rem;
+
+        .container-header{
+            background-color: black;
+            padding: .5em 1em;
+
+            display: grid;
+            grid-template-columns: .4fr 1fr;
+            gap: .625rem;
+
+            .your-pkm{
+                display: flex;
+                align-items: end;
+                justify-content: center;
+
+                border: 1px solid white;
+                padding: 2px;
+            }
+            .your-status{
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                @include hp();
+
+                .info{
+                    display: flex;
+                    align-items: center;
+                    gap: .375rem;
+                    margin-bottom: .5rem;
+
+                    
+                    p{
+                        margin: 0;
+                        padding: 0;
+                        color: white;
+                        @include font-Pixel();
+                        text-transform: uppercase;
+                    }
+                    img{
+                        height: 1rem;
+                    }
+
+                }
+            }
+        }
+
+        .container-content{
+
+            overflow: hidden;
+
+            height: 12.5rem;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+    
+            background-image: url('../img/background/background-1.png');
+            background-repeat: no-repeat;
+            background-position: cover;
+            background-size: 100%;
+
+            .content-1{
+                
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                visibility: hidden;
+
+                height: 0;
+                width: 0;
+
+                &.active{
+                    visibility: visible;
+                    height: auto;
+                    width: auto;
+                }
+
+                .content-info-pkm{
+                    overflow: hidden;
+                    background-color: rgb(19, 19, 19);
+                    height: 3.75rem;
+                    width: 0;
+    
+                    padding: .5rem;
+    
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+    
+                    box-sizing: border-box;
+                    border-radius: .3125rem;
+                    border: 2px solid white;
+
+                    visibility: hidden;
+
+                    transition: 1s;
+                    transition-property: width;
+
+                    &.active{
+                        visibility: visible;
+                        width: 10rem;
+                    }
+    
+                    .name-pkm{
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+    
+                        p{
+                            padding: 0;
+                            margin: 0;
+        
+                            color: white;
+                            font-size: .75rem;
+                            font-weight: 900;
+                        }
+        
+                    }
+    
+                    .content-hp{
+                        margin-top: .25rem;
+                        width: 80%;
+    
+                        .hp{
+    
+                            height: .25rem;
+                            border: 4px solid white;
+                            border-radius: .25rem;
+    
+                            span{
+                                display: block;
+                                height: 100%;
+                                width: 100%;
+                                background-color: green;
+                                border: 1px solid black;
+                                box-sizing: border-box;
+                            }
+                        }
+                    }
+                }
+
+                
+                .figure-pkm{
+                    transform: translateY(100px);
+
+                    transition: 2s;
+                    transition-property: transform;
+
+                    &.active{
+                        transform: translateY(0px);
+                    }
+                    
+                    img{
+                        margin-top: 1em;
+                        
+                        &.is_attack{
+                            animation-name: pkmDano;
+                            animation-duration: 2s;
+                        }
+                    }
+                }
+            }
+
+            .content-2{
+                visibility: hidden;
+                height: 0;
+                width: 0;
+                
+                &.active{
+                    visibility: visible;
+                    height: auto;
+                    width: auto;
+                }
+                .card{
+                    display: flex;
+                    align-items: center;
+
+                    .card-content-1{
+                        background-color: black;
+                        display: flex;
+                        align-items: center;
+                        border-radius: 20px 0px 0px 20px;
+                        //padding: .3125rem;
+
+                        overflow: hidden;
+                        visibility: hidden;
+                        width: 0;
+                        height: 0;
+
+                        transition: 2s;
+                        transition-property: width;
+
+                        &.active{
+                            visibility: visible;
+                            
+                            width: 1.875rem;
+                            height: 4.375rem;
+
+                            padding-left: .5em;
+                        }
+                    }
+
+                    .card-content-2{
+                        overflow: hidden;
+
+                        position: relative;
+
+                        background-color: black;
+                        padding: .625rem 5px;
+                        height: 0;
+                        width: 0;
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+
+                        border-radius: .3125rem;
+
+                        visibility: hidden;
+
+                        transition: 1s;
+                        transition-property: height;
+                        
+                        &.active{
+                            visibility: visible;
+                            width: auto;
+                            height: 4.375rem;
+                        }
+
+                        p{
+                            padding: 0;
+                            margin: 0;
+                            color: white;
+                            text-align: center;
+
+                            max-width: 28ch;
+                        }
+                    }
+                }
+            }
+
+
+            .content-3{
+                visibility: hidden;
+                height: 0;
+                width: 0;
+
+                &.active{
+                    visibility: visible;
+                    height: auto;
+                    width: auto;
+                }
+
+                .content{
+                    display: flex;
+                    justify-content: center;
+                    .card{
+                        max-width: 80%;
+                        .header-card{
+                            height: 1.25rem;
+                            background-color: palevioletred;
+                            border-radius: 1em 1em 0 0;
+                        }
+    
+                        .content-card{
+                            background-color: pink;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            padding: 1em;
+    
+                            border: 3px solid palevioletred;
+    
+                            p{
+                                margin: 0;
+                                padding: 0;
+    
+                                text-align: center;
+                                color: rgb(204, 74, 118);
+    
+                                font-weight: bold;
+                            }
+                        }
+    
+                        .footer-card{
+                            background-color: palevioletred;
+                            display: flex;
+                            justify-content: flex-end;
+                            padding: .4em;
+    
+                            #bt-heal{
+                                background-color: rgb(206, 0, 69);
+                                border: none;
+                                color: white;
+                                padding: 0 1em;
+                                border-radius: 1.25rem;
+                                cursor: pointer;
+    
+                                transition: .5s;
+                                transition-property: background-color;
+    
+                                &:hover{
+                                    background-color: rgb(219, 61, 114);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .content-4{
+
+                visibility: hidden;
+                height: 0;
+                width: 0;
+                
+                &.active{
+                    visibility: visible;
+                    width: 100%;
+                    height: auto;
+                }
+                .container-screen-4{
+                    display: flex;
+                    justify-content: center;
+                    .card{
+                        width: 70%;
+                        .header-card{
+                            background-color: rgb(9, 80, 9);
+                            padding: .3em;
+                            width: 100%;
+                            box-sizing: border-box;
+
+                            p{
+                                padding: 0;
+                                margin: 0;
+                                color: white;
+                            }
+                        }
+
+                        .content-card{
+                            background-color: green;
+                            padding: .5em;
+                            box-sizing: border-box;
+
+                            p{
+                                padding: 0;
+                                margin: 0;
+                                color: rgb(255, 255, 255);
+                            }
+                        }
+
+                        .footer-card{
+                            background-color: rgb(9, 80, 9);
+                            border-radius: 1em;
+                            width: 100%;
+                            padding: .5em;
+                            box-sizing: border-box;
+                            margin-top: 1em;
+
+                            display: flex;
+                            justify-content: flex-end;
+
+                            border: 2px solid black;
+
+
+                            #bt-next-pkm{
+                                border: 2px solid black;
+                                border-radius: .875rem;
+                                background-color: greenyellow;
+                                color: rgb(0, 0, 0);
+                                font-weight: 600;
+                                cursor: pointer;
+
+                                transition: .5s;
+                                transition-property: background-color;
+
+                                &:hover{
+                                    background-color: rgb(224, 255, 177);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    
+        .container-footer{
+            background-color: black;
+            width: 100%;
+            height: 4rem;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 .625rem;
+
+            box-sizing: border-box;
+
+            .action{
+                display: flex;
+                align-items: center;
+                gap: .75rem;
+                #bt-attack{
+                    height: 3.125rem;
+                    width: 3.125rem;
+
+                    border-radius: 50%;
+
+                    background-color: rgb(230, 27, 27);
+                    background-image: url('../img/icone/punch.png');
+                    background-repeat: no-repeat;
+                    background-size: 60%;
+                    background-position: center;
+
+                    border: none;
+                    cursor: pointer;
+
+                    transition: .3s;
+                    transition-property: background-color, transform;
+
+                    &:hover{
+                        background-color: rgb(243, 186, 30);
+                        transform: rotate(360deg);
+                    }
+                    &:disabled{
+                        background-color: gray;
+                        opacity: .5;
+                        pointer-events: none;
+                    }
+                }
+                #bt-Explore{
+                    height: 2.5rem;
+                    width: 2.5rem;
+
+                    border-radius: 50%;
+
+                    background-color: rgb(3, 87, 197);
+                    background-image: url('../img/icone/lupa.png');
+                    background-repeat: no-repeat;
+                    background-size: 50%;
+                    background-position: center;
+
+                    border: none;
+                    cursor: pointer;
+
+                    color: white;
+                    font-weight: 600;
+                    font-size: .5rem;
+
+                    transition: .5s;
+                    transition-property: background-color, transform;
+
+                    
+
+                    &:hover{
+                        background-color: rgb(56, 138, 60);
+                        transform: rotate(270deg);
+                    }
+
+                }
+            }
+
+            .moves{
+                button{
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    border: 1px solid white;
+                    border-radius: .5rem;
+
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    background-position: center;
+
+                    cursor: pointer;
+
+                    transition: .5s;
+                    transition-property: background;
+
+                    &:hover{
+                        background-size: 150%;
+                    }
+
+                    &:disabled{
+                        opacity: .5;
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+    }
+}

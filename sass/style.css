@@ -1,0 +1,496 @@
+@font-face {
+  font-family: "Pokemon Solid";
+  src: url("../fonts/PokemonSolid.ttf");
+}
+@font-face {
+  font-family: "Upheaval TT (BRK)";
+  src: url("../fonts/upheavtt.ttf");
+}
+@-webkit-keyframes animation-up-down {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes animation-up-down {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes pkmDano {
+  0% {
+    transform: rotate(0deg);
+  }
+  6% {
+    transform: rotate(-30deg);
+  }
+  12% {
+    transform: rotate(0deg);
+  }
+  18% {
+    transform: rotate(30deg);
+    filter: hue-rotate(144deg);
+  }
+  24% {
+    transform: rotate(0);
+    filter: none;
+  }
+  30% {
+    transform: rotate(-30deg);
+    filter: hue-rotate(144deg);
+  }
+  36% {
+    transform: rotate(0deg);
+    filter: none;
+  }
+  100% {
+    transform: rotate(0deg);
+    filter: none;
+  }
+}
+@keyframes pkmDano {
+  0% {
+    transform: rotate(0deg);
+  }
+  6% {
+    transform: rotate(-30deg);
+  }
+  12% {
+    transform: rotate(0deg);
+  }
+  18% {
+    transform: rotate(30deg);
+    filter: hue-rotate(144deg);
+  }
+  24% {
+    transform: rotate(0);
+    filter: none;
+  }
+  30% {
+    transform: rotate(-30deg);
+    filter: hue-rotate(144deg);
+  }
+  36% {
+    transform: rotate(0deg);
+    filter: none;
+  }
+  100% {
+    transform: rotate(0deg);
+    filter: none;
+  }
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container .battle {
+  width: 31.25rem;
+}
+.container .battle .container-header {
+  background-color: black;
+  padding: 0.5em 1em;
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
+  gap: 0.625rem;
+}
+.container .battle .container-header .your-pkm {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  border: 1px solid white;
+  padding: 2px;
+}
+.container .battle .container-header .your-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container .battle .container-header .your-status .hp {
+  height: 0.25rem;
+  border: 4px solid white;
+  border-radius: 0.25rem;
+}
+.container .battle .container-header .your-status .hp span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: green;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+.container .battle .container-header .your-status .info {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.5rem;
+}
+.container .battle .container-header .your-status .info p {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Upheaval TT (BRK)";
+  text-transform: uppercase;
+}
+.container .battle .container-header .your-status .info img {
+  height: 1rem;
+}
+.container .battle .container-content {
+  overflow: hidden;
+  height: 12.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../img/background/background-1.png");
+  background-repeat: no-repeat;
+  background-position: cover;
+  background-size: 100%;
+}
+.container .battle .container-content .content-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+.container .battle .container-content .content-1.active {
+  visibility: visible;
+  height: auto;
+  width: auto;
+}
+.container .battle .container-content .content-1 .content-info-pkm {
+  overflow: hidden;
+  background-color: rgb(19, 19, 19);
+  height: 3.75rem;
+  width: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 0.3125rem;
+  border: 2px solid white;
+  visibility: hidden;
+  transition: 1s;
+  transition-property: width;
+}
+.container .battle .container-content .content-1 .content-info-pkm.active {
+  visibility: visible;
+  width: 10rem;
+}
+.container .battle .container-content .content-1 .content-info-pkm .name-pkm {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.container .battle .container-content .content-1 .content-info-pkm .name-pkm p {
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+.container .battle .container-content .content-1 .content-info-pkm .content-hp {
+  margin-top: 0.25rem;
+  width: 80%;
+}
+.container .battle .container-content .content-1 .content-info-pkm .content-hp .hp {
+  height: 0.25rem;
+  border: 4px solid white;
+  border-radius: 0.25rem;
+}
+.container .battle .container-content .content-1 .content-info-pkm .content-hp .hp span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: green;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+.container .battle .container-content .content-1 .figure-pkm {
+  transform: translateY(100px);
+  transition: 2s;
+  transition-property: transform;
+}
+.container .battle .container-content .content-1 .figure-pkm.active {
+  transform: translateY(0px);
+}
+.container .battle .container-content .content-1 .figure-pkm img {
+  margin-top: 1em;
+}
+.container .battle .container-content .content-1 .figure-pkm img.is_attack {
+  -webkit-animation-name: pkmDano;
+          animation-name: pkmDano;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+.container .battle .container-content .content-2 {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+.container .battle .container-content .content-2.active {
+  visibility: visible;
+  height: auto;
+  width: auto;
+}
+.container .battle .container-content .content-2 .card {
+  display: flex;
+  align-items: center;
+}
+.container .battle .container-content .content-2 .card .card-content-1 {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  border-radius: 20px 0px 0px 20px;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  transition: 2s;
+  transition-property: width;
+}
+.container .battle .container-content .content-2 .card .card-content-1.active {
+  visibility: visible;
+  width: 1.875rem;
+  height: 4.375rem;
+  padding-left: 0.5em;
+}
+.container .battle .container-content .content-2 .card .card-content-2 {
+  overflow: hidden;
+  position: relative;
+  background-color: black;
+  padding: 0.625rem 5px;
+  height: 0;
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.3125rem;
+  visibility: hidden;
+  transition: 1s;
+  transition-property: height;
+}
+.container .battle .container-content .content-2 .card .card-content-2.active {
+  visibility: visible;
+  width: auto;
+  height: 4.375rem;
+}
+.container .battle .container-content .content-2 .card .card-content-2 p {
+  padding: 0;
+  margin: 0;
+  color: white;
+  text-align: center;
+  max-width: 28ch;
+}
+.container .battle .container-content .content-3 {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+.container .battle .container-content .content-3.active {
+  visibility: visible;
+  height: auto;
+  width: auto;
+}
+.container .battle .container-content .content-3 .content {
+  display: flex;
+  justify-content: center;
+}
+.container .battle .container-content .content-3 .content .card {
+  max-width: 80%;
+}
+.container .battle .container-content .content-3 .content .card .header-card {
+  height: 1.25rem;
+  background-color: palevioletred;
+  border-radius: 1em 1em 0 0;
+}
+.container .battle .container-content .content-3 .content .card .content-card {
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  border: 3px solid palevioletred;
+}
+.container .battle .container-content .content-3 .content .card .content-card p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: rgb(204, 74, 118);
+  font-weight: bold;
+}
+.container .battle .container-content .content-3 .content .card .footer-card {
+  background-color: palevioletred;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.4em;
+}
+.container .battle .container-content .content-3 .content .card .footer-card #bt-heal {
+  background-color: rgb(206, 0, 69);
+  border: none;
+  color: white;
+  padding: 0 1em;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  transition: 0.5s;
+  transition-property: background-color;
+}
+.container .battle .container-content .content-3 .content .card .footer-card #bt-heal:hover {
+  background-color: rgb(219, 61, 114);
+}
+.container .battle .container-content .content-4 {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+.container .battle .container-content .content-4.active {
+  visibility: visible;
+  width: 100%;
+  height: auto;
+}
+.container .battle .container-content .content-4 .container-screen-4 {
+  display: flex;
+  justify-content: center;
+}
+.container .battle .container-content .content-4 .container-screen-4 .card {
+  width: 70%;
+}
+.container .battle .container-content .content-4 .container-screen-4 .card .header-card {
+  background-color: rgb(9, 80, 9);
+  padding: 0.3em;
+  width: 100%;
+  box-sizing: border-box;
+}
+.container .battle .container-content .content-4 .container-screen-4 .card .header-card p {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+.container .battle .container-content .content-4 .container-screen-4 .card .content-card {
+  background-color: green;
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+.container .battle .container-content .content-4 .container-screen-4 .card .content-card p {
+  padding: 0;
+  margin: 0;
+  color: rgb(255, 255, 255);
+}
+.container .battle .container-content .content-4 .container-screen-4 .card .footer-card {
+  background-color: rgb(9, 80, 9);
+  border-radius: 1em;
+  width: 100%;
+  padding: 0.5em;
+  box-sizing: border-box;
+  margin-top: 1em;
+  display: flex;
+  justify-content: flex-end;
+  border: 2px solid black;
+}
+.container .battle .container-content .content-4 .container-screen-4 .card .footer-card #bt-next-pkm {
+  border: 2px solid black;
+  border-radius: 0.875rem;
+  background-color: greenyellow;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+  transition-property: background-color;
+}
+.container .battle .container-content .content-4 .container-screen-4 .card .footer-card #bt-next-pkm:hover {
+  background-color: rgb(224, 255, 177);
+}
+.container .battle .container-footer {
+  background-color: black;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.625rem;
+  box-sizing: border-box;
+}
+.container .battle .container-footer .action {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.container .battle .container-footer .action #bt-attack {
+  height: 3.125rem;
+  width: 3.125rem;
+  border-radius: 50%;
+  background-color: rgb(230, 27, 27);
+  background-image: url("../img/icone/punch.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  transition-property: background-color, transform;
+}
+.container .battle .container-footer .action #bt-attack:hover {
+  background-color: rgb(243, 186, 30);
+  transform: rotate(360deg);
+}
+.container .battle .container-footer .action #bt-attack:disabled {
+  background-color: gray;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.container .battle .container-footer .action #bt-Explore {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  background-color: rgb(3, 87, 197);
+  background-image: url("../img/icone/lupa.png");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  font-size: 0.5rem;
+  transition: 0.5s;
+  transition-property: background-color, transform;
+}
+.container .battle .container-footer .action #bt-Explore:hover {
+  background-color: rgb(56, 138, 60);
+  transform: rotate(270deg);
+}
+.container .battle .container-footer .moves button {
+  height: 2.5rem;
+  width: 2.5rem;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  cursor: pointer;
+  transition: 0.5s;
+  transition-property: background;
+}
+.container .battle .container-footer .moves button:hover {
+  background-size: 150%;
+}
+.container .battle .container-footer .moves button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,44 @@
+
+@keyframes animation-up-down{
+    0%{
+        transform:translateY(0);
+    }
+    20%{
+        transform: translateY(20px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes pkmDano{
+    0%{
+        transform: rotate(0deg);
+    }
+    6%{
+        transform: rotate(-30deg);
+    }
+    12%{
+        transform: rotate(0deg);
+    }
+    18%{
+        transform: rotate(30deg);
+        filter: hue-rotate(144deg);
+    }
+    24%{
+        transform: rotate(0);
+        filter: none;
+    }
+    30%{
+        transform: rotate(-30deg);
+        filter: hue-rotate(144deg);
+    }
+    36%{
+        transform: rotate(0deg);
+        filter: none;
+    }
+    100%{
+        transform: rotate(0deg);
+        filter: none; 
+    }
+}

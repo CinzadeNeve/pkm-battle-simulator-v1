@@ -1,0 +1,23 @@
+
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('../fonts/PokemonSolid.ttf');
+}
+
+@font-face {
+    font-family: 'Upheaval TT (BRK)';
+    src: url('../fonts/upheavtt.ttf');
+}
+
+
+
+
+// MIXIN de fontes
+
+@mixin font-Pokemon(){
+    font-family: 'Pokemon Solid';
+}
+
+@mixin font-Pixel(){
+    font-family: 'Upheaval TT (BRK)';
+}
