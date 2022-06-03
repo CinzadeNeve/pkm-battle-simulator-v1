@@ -587,7 +587,8 @@ document.getElementById('bt-heal').addEventListener('click', ()=>{
     document.getElementById('bt-Explore').disabled = false;
 
     document.querySelector('.container-content .content-3').classList.remove('active');
-    PokemonPrincipal.getHp(PokemonPrincipal.getHpMax());
+    let k = PokemonPrincipal.getHpMax();
+    PokemonPrincipal.getHp(k);
 
     updateBarHP();
     randomPkm();
