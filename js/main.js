@@ -174,8 +174,8 @@ const PokemonSelvagens = [
     {
         Pokemon: 134,
         Moves: {
-            move1: 0,
-            move2: 1,
+            move1: 2,
+            move2: 3,
         }
     }
 ]
@@ -384,25 +384,19 @@ const hpOponentZero = () =>{
 }
 
 
-loadingScreen();
-updateBarHP();
-randomPkm();
-
-document.getElementById('bt-Explore').addEventListener('click', randomPkm);
-
-document.getElementById('move-1').addEventListener('click', () =>{
-    let probabilidade = Move[PokemonPrincipal.move_1].porcentagem;
+const useMove = (moveAttack) =>{
+    let probabilidade = Move[moveAttack].porcentagem;
     let sorte = Math.random() * (100 - 1) + 1;
 
     if(sorte <= probabilidade || probabilidade === -1){
         let dano;
         let hp;
         let def;
-        let categoria = Move[PokemonPrincipal.move_1].categoria;
+        let categoria = Move[moveAttack].categoria;
         
 
         if(categoria === 'Especial'){
-            dano = Move[PokemonPrincipal.move_1].poder + PokemonPrincipal.getAtkSp();
+            dano = Move[moveAttack].poder + PokemonPrincipal.getAtkSp();
             hp = PokemonOponente.getHp();
             def = PokemonOponente.getDefSp();
             
@@ -421,7 +415,7 @@ document.getElementById('move-1').addEventListener('click', () =>{
             PokemonOponente.setHp(hp);
         }
         else if(categoria === 'Físico'){
-            dano = Move[PokemonPrincipal.move_1].poder + PokemonPrincipal.getAtk();
+            dano = Move[moveAttack].poder + PokemonPrincipal.getAtk();
             hp = PokemonOponente.getHp();
             def = PokemonOponente.getDef();
             
@@ -565,8 +559,17 @@ document.getElementById('move-1').addEventListener('click', () =>{
 
         },1000);
     }
+}
 
-});
+
+loadingScreen();
+updateBarHP();
+randomPkm();
+
+document.getElementById('bt-Explore').addEventListener('click', randomPkm);
+
+document.getElementById('move-1').addEventListener('click', () => useMove(PokemonPrincipal.move_1));
+document.getElementById('move-2').addEventListener('click', () => useMove(PokemonPrincipal.move_2));
 
 
 document.getElementById('bt-next-pkm').addEventListener('click', ()=>{

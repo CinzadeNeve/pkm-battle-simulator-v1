@@ -475,6 +475,10 @@
   background-color: rgb(56, 138, 60);
   transform: rotate(270deg);
 }
+.container .battle .container-footer .action #bt-Explore:disabled {
+  background-color: gray;
+  opacity: 0.4;
+}
 .container .battle .container-footer .moves button {
   height: 2.5rem;
   width: 2.5rem;

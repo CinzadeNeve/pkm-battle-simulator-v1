@@ -494,6 +494,11 @@
                         transform: rotate(270deg);
                     }
 
+                    &:disabled{
+                        background-color: gray;
+                        opacity: 0.4;
+                    }
+
                 }
             }
 

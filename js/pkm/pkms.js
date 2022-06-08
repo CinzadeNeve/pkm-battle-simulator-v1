@@ -43,6 +43,28 @@ const Pokemon = [
         },
     },
 
+    //  JOLTEON
+    {
+        nome: "Jolteon",
+        descricao: "Se estiver irritado ou assustado, a pele por todo o corpo se eriça como agulhas afiadas que perfuram os inimigos.",
+        n: 135,
+        img: "./img/pkm/gen1/135.gif",
+        tipo: ["Elétrico"],
+        altura: "0.8 m",
+        peso: "24.5 kg",
+        categoria: "Relâmpago",
+        fraqueza: ["Terra"],
+        status: {
+            hp: 4,
+            ataque: 4,
+            defesa: 4,
+            sp_ataque: 7,
+            sp_defesa: 6,
+            velocidade: 8,
+        },
+    },
+
+
 ]
 
 export default Pokemon;
