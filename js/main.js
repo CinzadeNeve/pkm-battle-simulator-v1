@@ -177,6 +177,13 @@ const PokemonSelvagens = [
             move1: 2,
             move2: 3,
         }
+    },
+    {
+        Pokemon: 136,
+        Moves: {
+            move1: 4,
+            move2: 5,
+        }
     }
 ]
 
@@ -296,6 +303,13 @@ const randomPkm = () =>{
             Pokemon.forEach((i)=>{
                 if(i.n === PokemonSelvagens[1].Pokemon){
                     loadingPkmSelvagem(i.img, `./img/icone/pkm/gen1/${i.n}.png`, i.nome, i.n, PokemonSelvagens[1].Moves.move1, PokemonSelvagens[1].Moves.move2);
+                }
+            })
+        }
+        else if(n >= 26 && n <= 28){
+            Pokemon.forEach((i)=>{
+                if(i.n === PokemonSelvagens[2].Pokemon){
+                    loadingPkmSelvagem(i.img, `./img/icone/pkm/gen1/${i.n}.png`, i.nome, i.n, PokemonSelvagens[2].Moves.move1, PokemonSelvagens[2].Moves.move2);
                 }
             })
         }

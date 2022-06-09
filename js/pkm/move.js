@@ -59,6 +59,36 @@ const Moves = [
             appel: 3,
             jamming: 0,
         },
+    },
+
+    {
+        id: 4,
+        nome: "Fire Fang",
+        img: './img/move/Fire_Fang.png',
+        tipo: ["Fogo"],
+        categoria: "Físico",
+        pp: 15,
+        poder: 65,
+        porcentagem: 95,
+        espetaculo:{
+            appel: 4,
+            jamming: 0,
+        },
+    },
+
+    {
+        id: 5,
+        nome: "Fire Spin",
+        img: './img/move/Fire_Spin.png',
+        tipo: ["Fogo"],
+        categoria: "Especial",
+        pp: 15,
+        poder: 35,
+        porcentagem: 85,
+        espetaculo:{
+            appel: 3,
+            jamming: 0,
+        },
     }
 ]
 

@@ -64,6 +64,27 @@ const Pokemon = [
         },
     },
 
+    //FLAREON
+    {
+        nome: "Flareon",
+        descricao: "Se estiver irritado ou assustado, a pele por todo o corpo se eriça como agulhas afiadas que perfuram os inimigos.",
+        n: 136,
+        img: "./img/pkm/gen1/136.gif",
+        tipo: ["Fogo"],
+        altura: "0.9 m",
+        peso: "25.0 kg",
+        categoria: "Chamas",
+        fraqueza: ["Água", "Terra", "Pedra"],
+        status: {
+            hp: 4,
+            ataque: 8,
+            defesa: 4,
+            sp_ataque: 6,
+            sp_defesa: 7,
+            velocidade: 4,
+        },
+    },
+
 
 ]
 

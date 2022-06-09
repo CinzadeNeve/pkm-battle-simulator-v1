@@ -92,6 +92,7 @@
 }
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -497,4 +498,59 @@
 .container .battle .container-footer .moves button:disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+.container .dialog-balloon {
+  margin-top: 1em;
+  height: 7.5rem;
+  background-color: #008afe;
+  width: 31.25rem;
+  border: 6px solid #323da1;
+  box-sizing: border-box;
+}
+.container .dialog-balloon .container-balloon {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.container .dialog-balloon .container-balloon .content-1 {
+  width: 20%;
+  height: 100%;
+  overflow: hidden;
+}
+.container .dialog-balloon .container-balloon .content-1 img {
+  display: block;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .dialog-balloon .container-balloon .content-2 {
+  width: 80%;
+}
+.container .dialog-balloon .container-balloon .content-2 .box-dialog {
+  padding: 0.625rem 1.625rem;
+}
+.container .dialog-balloon .container-balloon .content-2 .box-dialog .name-personagem {
+  gap: 300min;
+}
+.container .dialog-balloon .container-balloon .content-2 .box-dialog .name-personagem h5 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.container .dialog-balloon .container-balloon .content-2 .box-dialog .name-personagem h5::before {
+  content: "";
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-image: url("../img/icone/pokebola.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.container .dialog-balloon .container-balloon .content-2 .box-dialog .text p {
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+  color: #ffffff;
 }/*# sourceMappingURL=style.css.map */
