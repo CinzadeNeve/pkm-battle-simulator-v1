@@ -100,6 +100,16 @@
 .container .battle {
   width: 31.25rem;
 }
+@media (max-width: 538px) {
+  .container .battle {
+    width: 21.875rem;
+  }
+}
+@media (max-width: 394px) {
+  .container .battle {
+    width: 17.5rem;
+  }
+}
 .container .battle .container-header {
   background-color: black;
   padding: 0.5em 1em;
@@ -503,9 +513,20 @@
   margin-top: 1em;
   height: 7.5rem;
   background-color: #008afe;
-  width: 31.25rem;
+  max-width: 31.25rem;
   border: 6px solid #323da1;
   box-sizing: border-box;
+  width: 31.25rem;
+}
+@media (max-width: 538px) {
+  .container .dialog-balloon {
+    width: 21.875rem;
+  }
+}
+@media (max-width: 394px) {
+  .container .dialog-balloon {
+    width: 17.5rem;
+  }
 }
 .container .dialog-balloon .container-balloon {
   display: flex;

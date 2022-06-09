@@ -27,8 +27,16 @@
     height: 100vh;
 
 
+
     .battle{
         width: 31.25rem;
+
+        @media (max-width: 538px){
+            width: 21.875rem;
+        }
+        @media (max-width: 394px){
+            width: 17.5rem;
+        }
 
         .container-header{
             background-color: black;
@@ -536,9 +544,18 @@
         margin-top: 1em;
         height: 7.5rem;
         background-color: #008afe;
-        width: 31.25rem;
+        max-width: 31.25rem;
         border: 6px solid #323da1;
         box-sizing: border-box;
+
+        width: 31.25rem;
+
+        @media (max-width: 538px){
+            width: 21.875rem;
+        }
+        @media (max-width: 394px){
+            width: 17.5rem;
+        }
 
         .container-balloon{
             display: flex;
