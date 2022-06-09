@@ -537,6 +537,8 @@
   width: 20%;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 .container .dialog-balloon .container-balloon .content-1 img {
   display: block;
