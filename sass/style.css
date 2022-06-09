@@ -107,7 +107,7 @@
 }
 @media (max-width: 394px) {
   .container .battle {
-    width: 17.5rem;
+    width: 100%;
   }
 }
 .container .battle .container-header {
@@ -525,7 +525,7 @@
 }
 @media (max-width: 394px) {
   .container .dialog-balloon {
-    width: 17.5rem;
+    width: 100%;
   }
 }
 .container .dialog-balloon .container-balloon {
