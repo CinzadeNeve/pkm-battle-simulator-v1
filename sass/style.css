@@ -525,6 +525,7 @@
 }
 .container .dialog-balloon .container-balloon .content-2 {
   width: 80%;
+  height: 100%;
 }
 .container .dialog-balloon .container-balloon .content-2 .box-dialog {
   padding: 0.625rem 1.625rem;
@@ -538,6 +539,9 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
 }
 .container .dialog-balloon .container-balloon .content-2 .box-dialog .name-personagem h5::before {
   content: "";
@@ -547,6 +551,15 @@
   background-image: url("../img/icone/pokebola.png");
   background-repeat: no-repeat;
   background-size: 100%;
+}
+.container .dialog-balloon .container-balloon .content-2 .box-dialog .text {
+  position: relative;
+  height: 60px;
+  overflow-y: scroll;
+  background-color: #4a5761;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border: 2px solid white;
 }
 .container .dialog-balloon .container-balloon .content-2 .box-dialog .text p {
   padding: 0;

@@ -558,9 +558,9 @@
 
             .content-2{
                 width: 80%;
+                height: 100%;
 
                 .box-dialog{
-                    
                     padding: .625rem 1.625rem;
                     .name-personagem{
                         gap: 300min;
@@ -572,6 +572,10 @@
                             font-weight: bold;
 
                             color: #ffffff;
+
+                            display: flex;
+                            align-items: center;
+                            gap: .375rem;
 
                             &::before{
                                 content: "";
@@ -587,6 +591,13 @@
                     }
 
                     .text{
+                        position: relative;
+                        height: 60px;
+                        overflow-y: scroll;
+                        background-color: #4a5761;
+                        padding: .5em;
+                        box-sizing: border-box;
+                        border: 2px solid white;
                         p{
                             padding: 0;
                             margin: 0;
