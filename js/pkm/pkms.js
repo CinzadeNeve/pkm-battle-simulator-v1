@@ -1,6 +1,26 @@
 
 
 const Pokemon = [
+     // VULPIX
+     {
+        nome: "Vulpix",
+        descricao: "Tem a capacidade de alterar a composição do seu corpo para se adequar ao ambiente circundante.",
+        n: 37,
+        img: "./img/pkm/gen1/037.gif",
+        tipo: ["Fogo"],
+        altura: "0.6 m",
+        peso: "9.9 kg",
+        categoria: "Raposa",
+        fraqueza: ["Água", "Terra", "Pedra"],
+        status: {
+            hp: 3,
+            ataque: 3,
+            defesa: 3,
+            sp_ataque: 3,
+            sp_defesa: 4,
+            velocidade: 4,
+        },
+    },
     // EEVEE
     {
         nome: "Eevee",

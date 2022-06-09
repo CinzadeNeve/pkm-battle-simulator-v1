@@ -587,4 +587,7 @@
   margin: 0;
   font-size: 0.875rem;
   color: #ffffff;
+}
+.container .dialog-balloon .container-balloon .content-2 .box-dialog .text p span {
+  color: rgb(255, 251, 0);
 }/*# sourceMappingURL=style.css.map */

@@ -89,6 +89,36 @@ const Moves = [
             appel: 3,
             jamming: 0,
         },
+    },
+
+    {
+        id: 6,
+        nome: "Ember",
+        img: './img/move/Ember.png',
+        tipo: ["Fogo"],
+        categoria: "Especial",
+        pp: 25,
+        poder: 40,
+        porcentagem: 100,
+        espetaculo:{
+            appel: 4,
+            jamming: 0,
+        },
+    },
+
+    {
+        id: 7,
+        nome: "Flame Wheel",
+        img: './img/move/Flame_Wheel.png',
+        tipo: ["Fogo"],
+        categoria: "Físico",
+        pp: 25,
+        poder: 60,
+        porcentagem: 100,
+        espetaculo:{
+            appel: 3,
+            jamming: 0,
+        },
     }
 ]
 

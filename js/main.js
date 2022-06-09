@@ -7,9 +7,10 @@ import EnableComandBattle from './components/battle/EnableComandBattle.js';
 
 
 let PokemonPrincipal = {
-    pokemon: 133,
-    move_1: 0,
-    move_2: 1,
+    pokemon: 37,
+    nome: "",
+    move_1: 6,
+    move_2: 7,
     stats: {
         hp_max: 0,
         hp: 0,
@@ -20,6 +21,12 @@ let PokemonPrincipal = {
         speed: 0,
     },
 
+    setNome: function(nome){
+        this.nome = nome;
+    },
+    getNome: function(){
+        return(this.nome);
+    },
 
     //HP
     setHp: function(hp){
@@ -81,6 +88,7 @@ let PokemonPrincipal = {
 }
 
 let PokemonOponente = {
+    nome: "",
     move1: 0,
     move2: 0,
     stats: {
@@ -91,6 +99,14 @@ let PokemonOponente = {
         def: 0,
         def_sp: 0,
         speed: 0,
+    },
+
+    setNome: function(nome){
+        this.nome = nome;
+    },
+
+    getNome: function(){
+        return(this.nome);
     },
 
     setMove1: function(move){
@@ -214,6 +230,7 @@ const loadingScreen = () =>{
             PokemonPrincipal.setAtkSp(i.status.sp_ataque);
             PokemonPrincipal.setDefSp(i.status.sp_defesa);
             PokemonPrincipal.setSpd(i.status.velocidade);
+            PokemonPrincipal.setNome(i.nome);
 
             if(document.getElementById('move-1')){
                 document.getElementById('move-1').style.backgroundImage = `url(${Move[PokemonPrincipal.move_1].img})`;
@@ -264,6 +281,7 @@ const loadingPkmSelvagem = async (img, icon, name, n, move1, move2) =>{
             PokemonOponente.setHpMax(i.status.hp*100);
             PokemonOponente.setMove1(move1);
             PokemonOponente.setMove2(move2);
+            PokemonOponente.setNome(i.nome);
 
 
             updateBarHP();
@@ -398,6 +416,20 @@ const hpOponentZero = () =>{
 }
 
 
+const speakProf = (moveName, dano, usuario, pkmname) =>{
+    let ballonDialog = document.querySelector('.dialog-balloon .container-balloon .content-2 .box-dialog .text');
+    ballonDialog.innerHTML+=`<p><span>${pkmname}</span> do(a) ${usuario} usou <span>${moveName}</span> causando ${dano} de dano</p>`;
+    ballonDialog.scrollTop = ballonDialog.scrollHeight;
+}
+
+const resetSpeakProf = () =>{
+    document.querySelector('.dialog-balloon .container-balloon .content-2 .box-dialog .text').innerHTML = ""; 
+}
+
+const breakSpeakProf = () =>{
+    document.querySelector('.dialog-balloon .container-balloon .content-2 .box-dialog .text').innerHTML += "<br />";
+}
+
 const useMove = (moveAttack) =>{
     let probabilidade = Move[moveAttack].porcentagem;
     let sorte = Math.random() * (100 - 1) + 1;
@@ -407,6 +439,7 @@ const useMove = (moveAttack) =>{
         let hp;
         let def;
         let categoria = Move[moveAttack].categoria;
+        let nome = Move[moveAttack].nome;
         
 
         if(categoria === 'Especial'){
@@ -427,6 +460,7 @@ const useMove = (moveAttack) =>{
             }
 
             PokemonOponente.setHp(hp);
+            speakProf(nome, dano, "Você", PokemonPrincipal.getNome());
         }
         else if(categoria === 'Físico'){
             dano = Move[moveAttack].poder + PokemonPrincipal.getAtk();
@@ -444,6 +478,7 @@ const useMove = (moveAttack) =>{
             }
 
             PokemonOponente.setHp(hp);
+            speakProf(nome, dano, "Você", PokemonPrincipal.getNome());
         }
 
         
@@ -473,6 +508,7 @@ const useMove = (moveAttack) =>{
                     let hp2;
                     let def2;
                     let categoria2 = Move[PokemonOponente.move1].categoria;
+                    let nome2 = Move[PokemonOponente.move1].nome;
 
                     if(categoria2 === 'Especial'){
                         dano2 = Move[PokemonOponente.move1].poder + PokemonOponente.getAtkSp();
@@ -491,6 +527,7 @@ const useMove = (moveAttack) =>{
                         }
             
                         PokemonPrincipal.setHp(hp2);
+                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
                     }
                     else if(categoria2 === 'Físico'){
                         dano2 = Move[PokemonOponente.move1].poder + PokemonOponente.getAtk();
@@ -510,6 +547,7 @@ const useMove = (moveAttack) =>{
                         }
             
                         PokemonPrincipal.setHp(hp2);
+                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
                     }
 
                 }
@@ -523,6 +561,7 @@ const useMove = (moveAttack) =>{
                     let hp2;
                     let def2;
                     let categoria2 = Move[PokemonOponente.move2].categoria;
+                    let nome2 = Move[PokemonOponente.move2].nome;
 
                     if(categoria2 === 'Especial'){
                         dano2 = Move[PokemonOponente.move2].poder + PokemonOponente.getAtkSp();
@@ -541,6 +580,7 @@ const useMove = (moveAttack) =>{
                         }
             
                         PokemonPrincipal.setHp(hp2);
+                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
                     }
                     else if(categoria2 === 'Físico'){
                         dano2 = Move[PokemonOponente.move2].poder + PokemonOponente.getAtk();
@@ -559,6 +599,7 @@ const useMove = (moveAttack) =>{
                         }
             
                         PokemonPrincipal.setHp(hp2);
+                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
                     }
 
                 }
@@ -568,10 +609,13 @@ const useMove = (moveAttack) =>{
 
 
             updateBarHP();
+            breakSpeakProf();
 
 
 
         },1000);
+
+
     }
 }
 
@@ -594,6 +638,7 @@ document.getElementById('bt-next-pkm').addEventListener('click', ()=>{
 
     document.querySelector('.container-content .content-4').classList.remove('active');
     randomPkm();
+    resetSpeakProf();
 
 
 });
@@ -608,6 +653,7 @@ document.getElementById('bt-heal').addEventListener('click', ()=>{
 
     updateBarHP();
     randomPkm();
+    resetSpeakProf();
 });
 
 
