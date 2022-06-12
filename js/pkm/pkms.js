@@ -21,6 +21,28 @@ const Pokemon = [
             velocidade: 4,
         },
     },
+
+    // Psyduck
+    {
+        nome: "Psyduck",
+        descricao: "Psyduck é constantemente assolado por dores de cabeça. Se o Pokémon deixar seu estranho poder entrar em erupção, aparentemente a dor diminui por um tempo.",
+        n: 54,
+        img: "./img/pkm/gen1/054.gif",
+        tipo: ["Água"],
+        altura: "0.8 m",
+        peso: "19.6 kg",
+        categoria: "Pato",
+        fraqueza: ["Grama", "Elétrico"],
+        status: {
+            hp: 3,
+            ataque: 4,
+            defesa: 3,
+            sp_ataque: 4,
+            sp_defesa: 3,
+            velocidade: 4,
+        },
+    },
+
     // EEVEE
     {
         nome: "Eevee",

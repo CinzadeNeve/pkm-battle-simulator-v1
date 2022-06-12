@@ -119,7 +119,22 @@ const Moves = [
             appel: 3,
             jamming: 0,
         },
-    }
+    },
+
+    {
+        id: 8,
+        nome: "Bubble",
+        img: './img/move/Bubble.png',
+        tipo: ["Água"],
+        categoria: "Especial",
+        pp: 30,
+        poder: 40,
+        porcentagem: 100,
+        espetaculo:{
+            appel: 4,
+            jamming: 0,
+        },
+    },
 ]
 
 export default Moves;

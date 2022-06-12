@@ -21,6 +21,15 @@ let PokemonPrincipal = {
         speed: 0,
     },
 
+    setMoves: function(mov1, mov2){
+        this.move_1 = mov1;
+        this.move_2 = mov2;
+    },
+
+    setPokemon: function(num){
+        this.pokemon = num;
+    },
+
     setNome: function(nome){
         this.nome = nome;
     },
@@ -433,10 +442,11 @@ const breakSpeakProf = () =>{
 const useMove = (moveAttack) =>{
     let probabilidade = Move[moveAttack].porcentagem;
     let sorte = Math.random() * (100 - 1) + 1;
+    
+    let hp;
 
     if(sorte <= probabilidade || probabilidade === -1){
         let dano;
-        let hp;
         let def;
         let categoria = Move[moveAttack].categoria;
         let nome = Move[moveAttack].nome;
@@ -486,137 +496,137 @@ const useMove = (moveAttack) =>{
         EnableComandBattle();
 
         document.querySelector('.container-content .content-1 .figure-pkm img').classList.add('is_attack');
-    
-        setTimeout(()=>{
-            document.querySelector('.container-content .content-1 .figure-pkm img').classList.remove('is_attack');
-            DisabledComandBattle();
-
-            if(hp <= 0){
-                hpOponentZero();
-            }
-
-
-
-            let moveSorte = (Math.random() * (3 - 1) + 1).toFixed(0);
-    
-            if(Number(moveSorte) === 1){
-                let probabilidade2 = Move[PokemonOponente.move1].porcentagem;
-                let sorte2 = Math.random() * (100 - 1) + 1;
-
-                if(sorte2 <= probabilidade2 || probabilidade2 === -1){
-                    let dano2;
-                    let hp2;
-                    let def2;
-                    let categoria2 = Move[PokemonOponente.move1].categoria;
-                    let nome2 = Move[PokemonOponente.move1].nome;
-
-                    if(categoria2 === 'Especial'){
-                        dano2 = Move[PokemonOponente.move1].poder + PokemonOponente.getAtkSp();
-                        hp2 = PokemonPrincipal.getHp();
-                        def2 = PokemonPrincipal.getDefSp();
-                        
-                        dano2 -= def2;
-                        if (dano2 < 0){
-                            dano2 = 0;
-                        }
-            
-                        hp2 -= dano2;
-                        if(hp2 <= 0){
-                            hp2 = 0;
-                            yourHPZero();
-                        }
-            
-                        PokemonPrincipal.setHp(hp2);
-                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
-                    }
-                    else if(categoria2 === 'Físico'){
-                        dano2 = Move[PokemonOponente.move1].poder + PokemonOponente.getAtk();
-                        hp2 = PokemonPrincipal.getHp();
-                        def2 = PokemonPrincipal.getDef();
-                        
-                        dano2 -= def2;
-                        if (dano2 < 0){
-                            dano2 = 0;
-                        }
-            
-                        hp2 -= dano2;
-                        if(hp2 <= 0){
-                            hp2 = 0;
-                            yourHPZero();
-                            
-                        }
-            
-                        PokemonPrincipal.setHp(hp2);
-                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
-                    }
-
-                }
-            }
-            else if(Number(moveSorte) === 2){
-                let probabilidade2 = Move[PokemonOponente.move2].porcentagem;
-                let sorte2 = Math.random() * (100 - 1) + 1;
-
-                if(sorte2 <= probabilidade2 || probabilidade2 === -1){
-                    let dano2;
-                    let hp2;
-                    let def2;
-                    let categoria2 = Move[PokemonOponente.move2].categoria;
-                    let nome2 = Move[PokemonOponente.move2].nome;
-
-                    if(categoria2 === 'Especial'){
-                        dano2 = Move[PokemonOponente.move2].poder + PokemonOponente.getAtkSp();
-                        hp2 = PokemonPrincipal.getHp();
-                        def2 = PokemonPrincipal.getDefSp();
-                        
-                        dano2 -= def2;
-                        if (dano2 < 0){
-                            dano2 = 0;
-                        }
-            
-                        hp2 -= dano2;
-                        if(hp2 <= 0){
-                            hp2 = 0;
-                            yourHPZero();
-                        }
-            
-                        PokemonPrincipal.setHp(hp2);
-                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
-                    }
-                    else if(categoria2 === 'Físico'){
-                        dano2 = Move[PokemonOponente.move2].poder + PokemonOponente.getAtk();
-                        hp2 = PokemonPrincipal.getHp();
-                        def2 = PokemonPrincipal.getDef();
-                        
-                        dano2 -= def2;
-                        if (dano2 < 0){
-                            dano2 = 0;
-                        }
-            
-                        hp2 -= dano2;
-                        if(hp2 <= 0){
-                            hp2 = 0;
-                            yourHPZero();
-                        }
-            
-                        PokemonPrincipal.setHp(hp2);
-                        speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
-                    }
-
-                }
-            }
-
-            
-
-
-            updateBarHP();
-            breakSpeakProf();
-
-
-
-        },1000);
 
 
     }
+
+    setTimeout(()=>{
+        document.querySelector('.container-content .content-1 .figure-pkm img').classList.remove('is_attack');
+        DisabledComandBattle();
+
+        if(hp <= 0){
+            hpOponentZero();
+        }
+
+
+
+        let moveSorte = (Math.random() * (3 - 1) + 1).toFixed(0);
+
+        if(Number(moveSorte) === 1){
+            let probabilidade2 = Move[PokemonOponente.move1].porcentagem;
+            let sorte2 = Math.random() * (100 - 1) + 1;
+
+            if(sorte2 <= probabilidade2 || probabilidade2 === -1){
+                let dano2;
+                let hp2;
+                let def2;
+                let categoria2 = Move[PokemonOponente.move1].categoria;
+                let nome2 = Move[PokemonOponente.move1].nome;
+
+                if(categoria2 === 'Especial'){
+                    dano2 = Move[PokemonOponente.move1].poder + PokemonOponente.getAtkSp();
+                    hp2 = PokemonPrincipal.getHp();
+                    def2 = PokemonPrincipal.getDefSp();
+                    
+                    dano2 -= def2;
+                    if (dano2 < 0){
+                        dano2 = 0;
+                    }
+        
+                    hp2 -= dano2;
+                    if(hp2 <= 0){
+                        hp2 = 0;
+                        yourHPZero();
+                    }
+        
+                    PokemonPrincipal.setHp(hp2);
+                    speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
+                }
+                else if(categoria2 === 'Físico'){
+                    dano2 = Move[PokemonOponente.move1].poder + PokemonOponente.getAtk();
+                    hp2 = PokemonPrincipal.getHp();
+                    def2 = PokemonPrincipal.getDef();
+                    
+                    dano2 -= def2;
+                    if (dano2 < 0){
+                        dano2 = 0;
+                    }
+        
+                    hp2 -= dano2;
+                    if(hp2 <= 0){
+                        hp2 = 0;
+                        yourHPZero();
+                        
+                    }
+        
+                    PokemonPrincipal.setHp(hp2);
+                    speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
+                }
+
+            }
+        }
+        else if(Number(moveSorte) === 2){
+            let probabilidade2 = Move[PokemonOponente.move2].porcentagem;
+            let sorte2 = Math.random() * (100 - 1) + 1;
+
+            if(sorte2 <= probabilidade2 || probabilidade2 === -1){
+                let dano2;
+                let hp2;
+                let def2;
+                let categoria2 = Move[PokemonOponente.move2].categoria;
+                let nome2 = Move[PokemonOponente.move2].nome;
+
+                if(categoria2 === 'Especial'){
+                    dano2 = Move[PokemonOponente.move2].poder + PokemonOponente.getAtkSp();
+                    hp2 = PokemonPrincipal.getHp();
+                    def2 = PokemonPrincipal.getDefSp();
+                    
+                    dano2 -= def2;
+                    if (dano2 < 0){
+                        dano2 = 0;
+                    }
+        
+                    hp2 -= dano2;
+                    if(hp2 <= 0){
+                        hp2 = 0;
+                        yourHPZero();
+                    }
+        
+                    PokemonPrincipal.setHp(hp2);
+                    speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
+                }
+                else if(categoria2 === 'Físico'){
+                    dano2 = Move[PokemonOponente.move2].poder + PokemonOponente.getAtk();
+                    hp2 = PokemonPrincipal.getHp();
+                    def2 = PokemonPrincipal.getDef();
+                    
+                    dano2 -= def2;
+                    if (dano2 < 0){
+                        dano2 = 0;
+                    }
+        
+                    hp2 -= dano2;
+                    if(hp2 <= 0){
+                        hp2 = 0;
+                        yourHPZero();
+                    }
+        
+                    PokemonPrincipal.setHp(hp2);
+                    speakProf(nome2, dano2, "Oponente", PokemonOponente.getNome());
+                }
+
+            }
+        }
+
+        
+
+
+        updateBarHP();
+        breakSpeakProf();
+
+
+
+    },1000);
 }
 
 
@@ -655,5 +665,39 @@ document.getElementById('bt-heal').addEventListener('click', ()=>{
     randomPkm();
     resetSpeakProf();
 });
+
+
+document.getElementById('Vulpix').addEventListener("click", () =>{
+    PokemonPrincipal.setPokemon(37);
+    PokemonPrincipal.setMoves(6, 7);
+
+    document.getElementById('Vulpix').classList.add('active');
+    document.getElementById('Psyduck').classList.remove('active');
+    document.getElementById('Eevee').classList.remove('active');
+
+    loadingScreen();
+});
+
+document.getElementById('Eevee').addEventListener("click", () =>{
+    PokemonPrincipal.setPokemon(133);
+    PokemonPrincipal.setMoves(0, 1);
+
+    document.getElementById('Vulpix').classList.remove('active');
+    document.getElementById('Psyduck').classList.remove('active');
+    document.getElementById('Eevee').classList.add('active');
+    
+    loadingScreen();
+});
+
+document.getElementById('Psyduck').addEventListener("click", () =>{
+    PokemonPrincipal.setPokemon(54);
+    PokemonPrincipal.setMoves(8, 3);
+
+    document.getElementById('Psyduck').classList.add('active');
+    document.getElementById('Vulpix').classList.remove('active');
+    document.getElementById('Eevee').classList.remove('active');
+    
+    loadingScreen();
+})
 
 
